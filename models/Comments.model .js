@@ -1,14 +1,21 @@
 const mongoose = require('mongoose')
-const { model, Schema } = require('mongoose')
 
-const commentSchema = new Schema({
-  tweets: { type: Schema.Types.ObjectId, ref: 'twitters' },
-  users: String,
-  comment: String,
-  likes: String,
-  saves: String,
+const commentSchema = mongoose.Schema({
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Users',
+  },
+  text: {
+    type: String,
+    required: true,
+  },
+  tweet: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Tweets',
+  },
 })
 
-const Comments = model('comments', commentSchema)
+const Comment = mongoose.model('comments', commentSchema)
 
-module.exports = Comments
+module.exports = Comment

@@ -1,9 +1,9 @@
 const { Router } = require('express')
 const { commentsController } = require('../controller/comments.controller')
+
 const router = Router()
 
-router.get('/comments', commentsController.getComments)
-router.post('/comments', commentsController.postComments)
-router.delete('/comments/:id', commentsController.deleteComments)
+router.post('/comments', commentsController.addComment)
+router.delete('/comments/:id', commentsController.deleteComment)
 
 module.exports = router

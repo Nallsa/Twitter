@@ -1,9 +1,12 @@
 const { Router } = require('express')
-const { reviewController } = require('../controller/review.controller')
+const { tweetsController } = require('../controller/tweets.controller ')
+
 const router = Router()
 
-router.get('/review', reviewController.getReview)
-router.post('/review', reviewController.postReview)
-router.delete('/review/:id', reviewController.deleteReview)
+router.post('/tweets', tweetsController.addTweet)
+router.delete('/tweets/:id', tweetsController.deleteTweet)
+router.delete('/tweets/:id', tweetsController.deleteLikes)
+router.get('/tweets', tweetsController.getTweet)
+router.patch('/tweets/:id', tweetsController.addLikes)
 
 module.exports = router

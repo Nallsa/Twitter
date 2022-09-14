@@ -1,13 +1,23 @@
 const mongoose = require('mongoose')
-const { model, Schema } = require('mongoose')
 
-const tweetsSchema = new Schema({
-  users: String,
-  tweets: String,
-  likes: String,
-  saves: String,
+const tweetSchema = mongoose.Schema({
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Users',
+  },
+  tweet: {
+    type: String,
+    required: true,
+  },
+  likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Users',
+    },
+  ],
 })
 
-const Tweets = model('tweetsSchema', tweetsSchema)
+const Tweet = mongoose.model('tweets', tweetsSchema)
 
-module.exports = Tweets
+module.exports = Tweet

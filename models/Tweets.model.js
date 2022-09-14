@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const tweetSchema = mongoose.Schema({
+const tweetsSchema = mongoose.Schema({
   author: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
